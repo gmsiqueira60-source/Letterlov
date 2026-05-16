@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Recomeço</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+            color: #4a4a4a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.85);
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #ff477e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .heart {
+            color: #ff477e;
+            font-size: 50px;
+            animation: heartbeat 1.2s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.1); }
+            40% { transform: scale(1.05); }
+            60% { transform: scale(1.15); }
+            80% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #5c5c5c;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #ff477e;
+        }
+
+        .btn {
+            background-color: #ff477e;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.3);
+        }
+
+        .btn:hover {
+            background-color: #ff1a5c;
+            transform: translateY(-2px);
+        }
+
+        .petal {
+            position: fixed;
+            top: -10px;
+            font-size: 20px;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>Nosso Próximo Capítulo</h1>
+        
+        <p>Dizem que a vida dá voltas, mas a verdade é que algumas voltas servem apenas para nos mostrar onde é o nosso lugar. O tempo longe foi difícil, mas foi necessário para entender que <span class="highlight">nenhuma história bonita é feita em linha reta</span>.</p>
+        
+        <p>Passar por um término e encontrar o caminho de volta um para o outro só prova que o que sentimos é real, maduro e forte. <span class="highlight">Mesmo com medo e com nossas preocupações e etc, ainda estamos dispostos a ser o melhor um para o outro e sermos melhores juntos, como um só, sendo assim um nó de 3 pontas.</span></p>
+        
+        <p>Não estamos voltando para o mesmo lugar; estamos construindo algo ainda melhor, com mais aprendizado, mais carinho e a certeza de que nos escolhemos todos os dias.</p>
+        
+        <p class="highlight">Que bom que a gente se reencontrou. Amo você!</p>
+        
+        <button class="btn" onclick="soltarPetalas()">Clique aqui para celebrar</button>
+    </div>
+
+    <script>
+        function soltarPetalas() {
+            const coracoes = ['❤️', '🌸', '✨', '💕'];
+            for (let i = 0; i < 30; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                petal.innerText = coracoes[Math.floor(Math.random() * coracoes.length)];
+                petal.style.left = Math.random() * 100 + 'vw';
+                petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                petal.style.opacity = Math.random();
+                document.body.appendChild(petal);
+
+                setTimeout(() => {
+                    petal.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
