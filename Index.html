@@ -15,6 +15,8 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
 
         .container {
@@ -27,6 +29,7 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             text-align: center;
             backdrop-filter: blur(10px);
+            z-index: 2;
         }
 
         h1 {
@@ -39,7 +42,7 @@
             color: #ff477e;
             font-size: 50px;
             animation: heartbeat 1.2s infinite;
-            margin: 20px 0;
+            margin: 10px 0;
         }
 
         @keyframes heartbeat {
@@ -49,6 +52,17 @@
             60% { transform: scale(1.15); }
             80% { transform: scale(1); }
             100% { transform: scale(1); }
+        }
+
+        /* Foto do Cinnamoroll Central */
+        .nossa-foto {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 15px;
+            border: 5px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
         }
 
         p {
@@ -73,11 +87,28 @@
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
             box-shadow: 0 4px 15px rgba(255, 71, 126, 0.3);
+            margin-top: 20px;
         }
 
         .btn:hover {
             background-color: #ff1a5c;
             transform: translateY(-2px);
+        }
+
+        /* Cinnamorolls voando fixos nas laterais de baixo */
+        .cat-decor {
+            position: fixed;
+            bottom: 15px;
+            width: 90px;
+            z-index: 1;
+        }
+        .cat-left { left: 20px; }
+        .cat-right { right: 20px; }
+
+        @media (max-width: 768px) {
+            .cat-decor { width: 65px; bottom: 10px; }
+            .cat-left { left: 5px; }
+            .cat-right { right: 5px; }
         }
 
         .petal {
@@ -86,21 +117,33 @@
             font-size: 20px;
             pointer-events: none;
             animation: fall linear forwards;
+            z-index: 3;
         }
 
         @keyframes fall {
-            to {
-                transform: translateY(105vh) rotate(360deg);
-            }
+            to { transform: translateY(105vh) rotate(360deg); }
+        }
+
+        /* Estilo do Player de Música do YouTube */
+        .video-container {
+            margin: 25px 0 10px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
     </style>
 </head>
 <body>
 
+    <img class="cat-decor cat-left" src="https://images.uncyc.org/pt/thumb/d/d4/Cinnamoroll_Sanrio.png/1200px-Cinnamoroll_Sanrio.png" alt="Cinnamoroll Esquerda">
+    <img class="cat-decor cat-right" src="https://images.uncyc.org/pt/thumb/d/d4/Cinnamoroll_Sanrio.png/1200px-Cinnamoroll_Sanrio.png" alt="Cinnamoroll Direita">
+
     <div class="container">
         <div class="heart">❤️</div>
         <h1>Nosso Próximo Capítulo</h1>
         
+        <img class="nossa-foto" src="https://i.pinimg.com/originals/84/3f/88/843f889240bf9bfec3bdfc91924156df.png" alt="Cinnamoroll Amor">
+
         <p>Dizem que a vida dá voltas, mas a verdade é que algumas voltas servem apenas para nos mostrar onde é o nosso lugar. O tempo longe foi difícil, mas foi necessário para entender que <span class="highlight">nenhuma história bonita é feita em linha reta</span>.</p>
         
         <p>Passar por um término e encontrar o caminho de volta um para o outro só prova que o que sentimos é real, maduro e forte. <span class="highlight">Mesmo com medo e com nossas preocupações e etc, ainda estamos dispostos a ser o melhor um para o outro e sermos melhores juntos, como um só, sendo assim um nó de 3 pontas.</span></p>
@@ -109,12 +152,16 @@
         
         <p class="highlight">Que bom que a gente se reencontrou. Amo você!</p>
         
+        <div class="video-container">
+            <iframe width="100%" height="60" src="https://www.youtube.com/embed/S_g2S_p8Csc?hl=pt_BR" title="Her's - Harvey" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
         <button class="btn" onclick="soltarPetalas()">Clique aqui para celebrar</button>
     </div>
 
     <script>
         function soltarPetalas() {
-            const coracoes = ['❤️', '🌸', '✨', '💕'];
+            const coracoes = ['❤️', '🌸', '✨', '💕', '☁️']; // Nuvenzinhas combinando com o Cinnamoroll!
             for (let i = 0; i < 30; i++) {
                 const petal = document.createElement('div');
                 petal.classList.add('petal');
